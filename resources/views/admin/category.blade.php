@@ -3,6 +3,9 @@
 
 <head>
     @include('admin.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.22.2/sweetalert2.css"
+        integrity="sha512-aZNBVcDIrRR7lLUG3UsYBKkl9C0hJHhrXiPdUookOGZQB4h9g2dB48O+BfWjRPWZcVShQW76xtCwgGrliVu5sg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style type="text/css">
         input[type='text'] {
@@ -16,6 +19,28 @@
             align-items: center;
             margin: 30px;
         }
+
+        .table_deg {
+            text-align: center;
+            margin: auto;
+            border: 2px solid yellowgreen;
+            margin-top: 50px;
+            width: 600px
+        }
+
+        th {
+            background-color: skyblue;
+            padding: 15px;
+            font-size: 20ps;
+            font-weight: bold;
+            color: white;
+        }
+
+        td {
+            color: white;
+            padding: 10px;
+            border: 1px solid skyblue;
+        }
     </style>
 </head>
 
@@ -28,7 +53,7 @@
             <div class="container-fluid">
                 <h1 style="color: white">Add Category</h1>
                 <div class="div_deg">
-                    <form action="{{url('add_category')}}" method="post">
+                    <form action="{{ route('category.add') }}" method="post">
                         @csrf
                         <div>
                             <input type="text" name="category">
@@ -37,18 +62,38 @@
 
                     </form>
                 </div>
+                <div>
+                    <table class="table_deg">
+                        <tr>
+                            <th>Category Nane</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        @foreach ($data as $data)
+                            <tr>
+                                <td>{{ $data->category_name }}</td>
+                                <td>
+                                    <a class="btn btn-success" href="{{route('category.edit', $data->id)}}">Edit</a>
+                                </td>
+                                <td>
+
+
+                                    <a href="{{ route('category.delete', $data->id) }}"
+                                        class="btn btn-danger deleteConfirmationAlert">Delete</a>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
     </div>
     <!-- JavaScript files-->
-    <script src="{{ asset('assets/admincss/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/admincss/vendor/popper.js/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/admincss/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/admincss/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
-    <script src="{{ asset('assets/admincss/vendor/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('assets/admincss/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('assets/admincss/js/charts-home.js') }}"></script>
-    <script src="{{ asset('assets/admincss/js/front.js') }}"></script>
+
+    @include('admin.script')
+
+
 </body>
 
 </html>
