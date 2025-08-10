@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    @include('home.css')
-</head>
-
-<body>
-  <div class="hero_area">
-     <!-- header section -->
-    @include('home.header')
-  </div>
-  <section class="contact_section ">
+<section class="contact_section ">
     <div class="container px-0">
       <div class="heading_container ">
         <h2 class="">
@@ -53,9 +41,3 @@
   </section>
 
   <br><br><br>
-
-  @include('home.footer')
-
-</body>
-
-</html>

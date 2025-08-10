@@ -58,6 +58,10 @@
 
                                 <p>{{$data->description}}</p>
                         </div>
+                        <div class="detail-box">
+
+                                <a class="btn btn-primary" href="{{route('cart.add',$data->id)}}">Add to Cart</a>
+                        </div>
 
 
                     </div>

@@ -100,9 +100,9 @@ class AdminController extends Controller
         return view('admin.edit_product', compact('data', 'category'));
     }
 
-    public function update_product(Request $request, $id)
+    public function update_product(Request $request, $slug)
     {
-        $data = product::find($id);
+        $data = product::find('slug',$slug)->get()->first();
         $data->title = $request->title;
         $data->description = $request->description;
         $data->price = $request->price;

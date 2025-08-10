@@ -23,12 +23,7 @@
 
   <!-- end shop section -->
 
-  <!-- contact section -->
-
-
-  <!-- end contact section -->
-
-  @include('home.contact')
+ 
 
   <!-- info section -->
 

@@ -85,7 +85,7 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-success"
-                                        href="{{ route('product.edit', $products->id) }}">Edit</a>
+                                        href="{{ route('product.edit', $products->slug) }}">Edit</a>
                                 </td>
                                 <td>
                                     <a class="btn btn-danger deleteConfirmationAlert"

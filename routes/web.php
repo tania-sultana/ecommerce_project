@@ -42,10 +42,11 @@ Route::get('view_product', [AdminController::class, 'view_product'])->middleware
 Route::get('delete_product/{id}', [AdminController::class, 'delete_product'])->middleware(['auth', 'admin'])->name('product.delete');
 
 Route::get('edit_product/{id}', [AdminController::class, 'edit_product'])->middleware(['auth', 'admin'])->name('product.edit');
-Route::post('update_product/{id}', [AdminController::class, 'update_product'])->middleware(['auth', 'admin'])->name('product.update');
+Route::post('update_product/{slug}', [AdminController::class, 'update_product'])->middleware(['auth', 'admin'])->name('product.update');
 Route::get('search_product', [AdminController::class, 'search_product'])->middleware(['auth', 'admin'])->name('product.search');
 
 Route::get('product_details/{id}', [HomeController::class, 'product_details'])->name('product.details');
+
 Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])->middleware(['auth', 'verified'])->name('cart.add');
 Route::get('my_cart', [HomeController::class, 'my_cart'])->middleware(['auth', 'verified'])->name('total.mycart');
 Route::get('delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware([
@@ -63,3 +64,8 @@ Route::get('view_order', [AdminController::class, 'view_order'])->middleware(['a
 Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])->middleware(['auth', 'admin'])->name('onTheWay');
 Route::get('delivered/{id}', [AdminController::class, 'delivered'])->middleware(['auth', 'admin'])->name('delivered.order');
 Route::get('print_pdf/{id}', [AdminController::class, 'print_pdf'])->middleware(['auth', 'admin'])->name('print.pdf');
+
+Route::get('shop', [HomeController::class, 'shop'])->name('my.shop');
+Route::get('why', [HomeController::class, 'why'])->name('why.me');
+Route::get('testimonial', [HomeController::class, 'testimonial'])->name('testimonial');
+Route::get('contact', [HomeController::class, 'contact'])->name('contact.us');
