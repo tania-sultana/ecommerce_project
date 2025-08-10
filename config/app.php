@@ -28,6 +28,9 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'stripe_secret' => env('STRIPE_SECRET'),
+    'stripe_key' => env('STRIPE_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

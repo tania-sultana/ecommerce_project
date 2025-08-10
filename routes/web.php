@@ -18,13 +18,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dasboard');
 
 Route::get('/', [HomeController::class, 'home'])->name('root');
 
 Route::get('/dashboard', [HomeController::class, 'login_home'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/myorders', [HomeController::class, 'myorders'])->middleware(['auth', 'verified'])->name('total.myorders');
 
 Route::get('view_category', [AdminController::class, 'view_category'])->middleware(['auth', 'admin'])->name('category.view');
 
@@ -47,7 +48,18 @@ Route::get('search_product', [AdminController::class, 'search_product'])->middle
 Route::get('product_details/{id}', [HomeController::class, 'product_details'])->name('product.details');
 Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])->middleware(['auth', 'verified'])->name('cart.add');
 Route::get('my_cart', [HomeController::class, 'my_cart'])->middleware(['auth', 'verified'])->name('total.mycart');
-Route::get('delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware(['auth'
+Route::get('delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware([
+    'auth'
 ])->name('delete.cart');
 Route::post('confirm_order', [HomeController::class, 'confirm_order'])->middleware(['auth'])->name('order.confirm');
+
+Route::controller(HomeController::class)->group(function () {
+
+    Route::get('stripe/{value}', 'stripe');
+    Route::get('stripe-payment-success', 'stripePost')->name('stripe.post');
+});
+
 Route::get('view_order', [AdminController::class, 'view_order'])->middleware(['auth'])->name('order.view');
+Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])->middleware(['auth', 'admin'])->name('onTheWay');
+Route::get('delivered/{id}', [AdminController::class, 'delivered'])->middleware(['auth', 'admin'])->name('delivered.order');
+Route::get('print_pdf/{id}', [AdminController::class, 'print_pdf'])->middleware(['auth', 'admin'])->name('print.pdf');

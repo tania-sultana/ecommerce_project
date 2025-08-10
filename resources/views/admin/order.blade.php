@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     @include('admin.css')
     <style>
-        table{
+        table {
             border: 2px solid skyblue;
             text-align: center;
         }
-        th
-        {
+
+        th {
             background-color: skyblue;
             padding: 10px;
             font-size: 18px;
@@ -16,56 +17,77 @@
             text-align: center;
             color: white
         }
-        td{
+
+        td {
             color: white;
             padding: 10px;
-            border:1px solid skyblue;
+            border: 1px solid skyblue;
         }
-        .table
-        {
+
+        .table {
             display: flex;
             justify-content: center;
             align-items: center;
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     @include('admin.header')
     @include('admin.sidebar')
-      <!-- Sidebar Navigation end-->
-      <div class="page-content">
+    <!-- Sidebar Navigation end-->
+    <div class="page-content">
         <div class="page-header">
-          <div class="container-fluid">
-          <div class="table_center">
-            <table>
-            <tr>
-                <th>Customer name</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Product title</th>
-                <th>price</th>
-                <th>Image</th>
-                <th>Status</th>
-            </tr>
-            @foreach($data as $data)
-            <tr>
-                <td>{{$data->name}}</td>
-                <td>{{$data->rec_address}}</td>
-                <td>{{$data->phone}}</td>
-                <td>{{$data->product->title}}</td>
-                <td>{{$data->product->price}}</td>
-                <td>
-                    <img width="150" src="products/{{$data->product->image}}" alt="">
-                </td>
-                <td>{{$data->status}}</td>
-            </tr>
-            @endforeach
-          </table>
-          </div>
-          </div>
-      </div>
+            <div class="container-fluid">
+                <div class="table_center">
+                    <table>
+                        <tr>
+                            <th>Customer name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Product title</th>
+                            <th>price</th>
+                            <th>Image</th>
+                            <th>Status</th>
+                            <th>Change Status</th>
+                            <th>Print PDF</th>
+                        </tr>
+                        @foreach ($data as $data)
+                            <tr>
+                                <td>{{ $data->name }}</td>
+                                <td>{{ $data->rec_address }}</td>
+                                <td>{{ $data->phone }}</td>
+                                <td>{{ $data->product->title }}</td>
+                                <td>{{ $data->product->price }}</td>
+                                <td>
+                                    <img width="150" src="products/{{ $data->product->image }}" alt="">
+                                </td>
+                                <td>
+                                    @if ($data->status == 'in progress')
+                                        <span style="color:red">{{ $data->status }}</span>
+                                    @elseif ($data->status == 'On the way')
+                                        <span style="color:skyblue">{{ $data->status }}</span>
+                                    @else
+                                        <span style="color:yellow">{{ $data->status }}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ route('onTheWay', $data->id) }}">On the way</a>
+                                    <a class="btn btn-success"
+                                        href="{{ route('delivered.order', $data->id) }}">Delivered</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-secondary" href="{{route('print.pdf', $data->id)}}">Print PDF</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- JavaScript files-->
     @include('admin.js')
-  </body>
+</body>
+
 </html>
