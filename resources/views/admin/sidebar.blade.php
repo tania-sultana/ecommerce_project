@@ -23,5 +23,6 @@
 
                 </ul>
             </li>
+            <li><a href="{{route('order.view')}}"> <i class="icon-grid"></i>Orders </a></li>
 
     </nav>

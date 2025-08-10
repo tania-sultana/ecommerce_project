@@ -30,12 +30,26 @@
             font: 20px;
             font-weight: bold;
             background-color: black;
-            width: 500px;
-            height: 80px;
+            
         }
 
         td {
             border: 1px solid skyblue;
+        }
+        .order_deg
+        {
+            padding-right: 100px;
+            margin-top: -50px;
+        }
+        label
+        {
+            display: inline-block;
+            width: 150px;
+        }
+        .div_gap
+        {
+            padding: 20px;
+
         }
     </style>
 
@@ -52,21 +66,22 @@
 
 
     <div class="div_deg">
-        <div>
-            <form action="">
-                <div>
+        <div class="order_deg">
+            <form action="{{route('order.confirm')}}" method="POST">
+                @csrf
+                <div class="div_gap">
                     <label for="">Recever Name</label>
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="{{Auth::user()->name}}">
                 </div>
-                <div>
+                <div class="div_gap">
                     <label for="">Recever Address</label>
-                    <textarea name="address" ></textarea>
+                    <textarea name="address" >{{Auth::user()->address}}</textarea>
                 </div>
-                <div>
+                <div class="div_gap">
                     <label for="">Recever Phone</label>
-                    <input type="text" name="phone">
+                    <input type="text" name="phone" value="{{Auth::user()->phone}}">
                 </div>
-                <div>
+                <div class="div_gap">
 
                     <input class="btn btn-primary" type="submit" value="Place Order">
                 </div>
