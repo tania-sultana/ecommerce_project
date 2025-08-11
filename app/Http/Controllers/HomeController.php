@@ -184,7 +184,7 @@ class HomeController extends Controller
         toastr()->timeOut(10000)->closeButton()->addSuccess('Product order successfully');
         return redirect('my_cart');
     }
-    public function shope()
+    public function shop()
     {
         $product = Product::all();
         if (Auth::id()) {
@@ -198,7 +198,7 @@ class HomeController extends Controller
     }
     public function why()
     {
-       
+
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id;
@@ -210,7 +210,7 @@ class HomeController extends Controller
     }
     public function testimonial()
     {
-       
+
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id;
@@ -222,7 +222,7 @@ class HomeController extends Controller
     }
     public function contact()
     {
-       
+
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id;

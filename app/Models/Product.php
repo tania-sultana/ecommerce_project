@@ -2,24 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Cviebrock\EloquentSluggable\Sluggable;
+
+
 class Product extends Model
 {
     use HasFactory;
-    use Sluggable;
 
-    public function Sluggable():array
-    {
-        return
-        [
-            'slug'=>
-            [
-                'source' => 'title'
-            ]
-            ];
+    protected static function boot() {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->slug = Str::slug($model->title);
+        });
     }
 
 }

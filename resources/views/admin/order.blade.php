@@ -51,7 +51,7 @@
                             <th>Product title</th>
                             <th>price</th>
                             <th>Image</th>
-                            <th>Image Status</th>
+                            <th>Payment Status</th>
                             <th>Status</th>
                             <th>Change Status</th>
                             <th>Print PDF</th>

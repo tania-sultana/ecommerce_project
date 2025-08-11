@@ -17,22 +17,22 @@
                     <a class="nav-link" href="{{route('root')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop.html">
+                    <a class="nav-link" href="{{route('my.shop')}}">
                         Shop
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="why.html">
+                    <a class="nav-link" href="{{route('why.me')}}">
                         Why Us
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="testimonial.html">
+                    <a class="nav-link" href="{{route('testimonial')}}">
                         Testimonial
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="{{route('contact.us')}}">Contact Us</a>
                 </li>
             </ul>
             <div class="user_option">
