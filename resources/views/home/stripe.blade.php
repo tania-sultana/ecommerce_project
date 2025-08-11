@@ -83,9 +83,7 @@
                <form id="payment-form">
                    @csrf
 
-
                    <input type="hidden" name="amount" value="{{ $amount }}">
-
 
                    <div class="w-full mb-3">
                        <label>Card Holder Name</label>

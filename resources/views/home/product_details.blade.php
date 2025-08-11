@@ -62,8 +62,6 @@
 
                                 <a class="btn btn-primary" href="{{route('cart.add',$data->id)}}">Add to Cart</a>
                         </div>
-
-
                     </div>
                 </div>
 
